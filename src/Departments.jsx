@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 const departments = [
   {
-    name: 'Engineering',
-    description: 'Our engineering team builds and maintains all the core technology. They are the backbone of our digital infrastructure, constantly innovating and solving complex problems to ensure our products are robust and scalable.',
-    imageUrl: 'https://placehold.co/400x200/4F46E5/FFFFFF?text=Engineering',
+    name: 'Aerodynamics',
+    description: 'Our aerodynamics team specializes in the study and application of airflow and its effects on objects in motion. They work on optimizing vehicle designs for improved performance and efficiency.',
+    imageUrl: 'aerodyanmics_dept.png',
     members: [
       { name: 'Alice Johnson', position: 'Software Engineer', memberImageUrl: 'https://placehold.co/100x100/A0B9D6/FFFFFF?text=AJ' },
       { name: 'Bob Williams', position: 'Senior Developer', memberImageUrl: 'https://placehold.co/100x100/F5D7A1/FFFFFF?text=BW' },
@@ -12,39 +12,19 @@ const departments = [
     ]
   },
   {
-    name: 'Marketing',
-    description: 'The marketing team drives brand awareness and customer engagement. They craft compelling stories, manage social media campaigns, and analyze market trends to connect with our audience and grow our community.',
-    imageUrl: 'https://placehold.co/400x200/4F46E5/FFFFFF?text=Marketing',
+    name: 'Mechanical',
+    description: 'The mechanical team focuses on the design, analysis, and manufacturing of mechanical systems. They work on projects ranging from automotive engineering to robotics, ensuring that all moving parts function seamlessly together.',
+    imageUrl: 'mechanical_dept.jpg',
     members: [
-      { name: 'David Smith', position: 'Marketing Manager', memberImageUrl: 'https://placehold.co/100x100/A0B9D6/FFFFFF?text=DS' },
-      { name: 'Eve Brown', position: 'Content Strategist', memberImageUrl: 'https://placehold.co/100x100/F5D7A1/FFFFFF?text=EB' },
-      { name: 'Frank White', position: 'Social Media Specialist', memberImageUrl: 'https://placehold.co/100x100/D0B8E1/FFFFFF?text=FW' },
+      { name: 'David Smith', position: 'Mechanical Engineer', memberImageUrl: 'https://placehold.co/100x100/A0B9D6/FFFFFF?text=DS' },
+      { name: 'Eve Brown', position: 'CAD Specialist', memberImageUrl: 'https://placehold.co/100x100/F5D7A1/FFFFFF?text=EB' },
+      { name: 'Frank White', position: 'Manufacturing Technician', memberImageUrl: 'https://placehold.co/100x100/D0B8E1/FFFFFF?text=FW' },
     ]
   },
   {
-    name: 'Product Design',
-    description: 'Product design focuses on creating intuitive and beautiful user experiences. They work closely with users to understand their needs, and then design interfaces that are not only functional but also delightful to interact with.',
-    imageUrl: 'https://placehold.co/400x200/4F46E5/FFFFFF?text=Product+Design',
-    members: [
-      { name: 'Grace Wilson', position: 'UX/UI Designer', memberImageUrl: 'https://placehold.co/100x100/A0B9D6/FFFFFF?text=GW' },
-      { name: 'Heidi Green', 'position': 'Product Designer', memberImageUrl: 'https://placehold.co/100x100/F5D7A1/FFFFFF?text=HG' },
-      { name: 'Ivan Turner', 'position': 'Research Lead', memberImageUrl: 'https://placehold.co/100x100/D0B8E1/FFFFFF?text=IT' },
-    ]
-  },
-  {
-    name: 'Human Resources',
-    description: 'HR is dedicated to fostering a positive and productive work environment. They handle recruitment, employee relations, and professional development, ensuring our team members are supported, motivated, and happy.',
-    imageUrl: 'https://placehold.co/400x200/4F46E5/FFFFFF?text=Human+Resources',
-    members: [
-      { name: 'Judy Hall', position: 'HR Manager', memberImageUrl: 'https://placehold.co/100x100/A0B9D6/FFFFFF?text=JH' },
-      { name: 'Karl Miller', position: 'Recruitment Specialist', memberImageUrl: 'https://placehold.co/100x100/F5D7A1/FFFFFF?text=KM' },
-      { name: 'Laura Clark', position: 'HR Generalist', memberImageUrl: 'https://placehold.co/100x100/D0B8E1/FFFFFF?text=LC' },
-    ]
-  },
-  {
-    name: 'Sales',
-    description: 'The sales department is responsible for generating revenue and building client relationships. They are experts in understanding customer needs and providing tailored solutions that showcase the value of our offerings.',
-    imageUrl: 'https://placehold.co/400x200/4F46E5/FFFFFF?text=Sales',
+    name: 'Techies',
+    description: 'The tech department is responsible for developing and maintaining the technology infrastructure of the company. They work on projects ranging from software development to system administration, ensuring that all technical systems run smoothly.',
+    imageUrl: 'tech_dept.jpg',
     members: [
       { name: 'Mike Evans', position: 'Sales Lead', memberImageUrl: 'https://placehold.co/100x100/A0B9D6/FFFFFF?text=ME' },
       { name: 'Nancy King', position: 'Account Executive', memberImageUrl: 'https://placehold.co/100x100/F5D7A1/FFFFFF?text=NK' },
@@ -52,13 +32,23 @@ const departments = [
     ]
   },
   {
-    name: 'Customer Support',
-    description: 'Customer support is the voice of our company, helping users with any questions or issues they may have. They provide timely and friendly assistance, turning challenges into opportunities to build trust and loyalty.',
-    imageUrl: 'https://placehold.co/400x200/4F46E5/FFFFFF?text=Customer+Support',
+    name: 'Electrical & Electronics',
+    description: 'The electrical & electronics team is responsible for designing and developing electrical systems. They work on projects ranging from circuit design to embedded systems, ensuring that all electronic elements function together.',
+    imageUrl: 'electronics_dept.jpg',
     members: [
-      { name: 'Peter Scott', position: 'Support Manager', memberImageUrl: 'https://placehold.co/100x100/A0B9D6/FFFFFF?text=PS' },
-      { name: 'Quinn Adams', position: 'Customer Representative', memberImageUrl: 'https://placehold.co/100x100/F5D7A1/FFFFFF?text=QA' },
-      { name: 'Rachel Baker', position: 'Support Specialist', memberImageUrl: 'https://placehold.co/100x100/D0B8E1/FFFFFF?text=RB' },
+      { name: 'Judy Hall', position: 'HR Manager', memberImageUrl: 'https://placehold.co/100x100/A0B9D6/FFFFFF?text=JH' },
+      { name: 'Karl Miller', position: 'Recruitment Specialist', memberImageUrl: 'https://placehold.co/100x100/F5D7A1/FFFFFF?text=KM' },
+      { name: 'Laura Clark', position: 'HR Generalist', memberImageUrl: 'https://placehold.co/100x100/D0B8E1/FFFFFF?text=LC' },
+    ]
+  },
+  {
+    name: 'Content',
+    description: 'The content team is responsible for creating and managing all written and visual content. They work closely with marketing and product teams to ensure that all content aligns with brand messaging and user needs.',
+    imageUrl: 'content_dept.jpg',
+    members: [
+      { name: 'Grace Wilson', position: 'UX/UI Designer', memberImageUrl: 'https://placehold.co/100x100/A0B9D6/FFFFFF?text=GW' },
+      { name: 'Heidi Green', 'position': 'Product Designer', memberImageUrl: 'https://placehold.co/100x100/F5D7A1/FFFFFF?text=HG' },
+      { name: 'Ivan Turner', 'position': 'Research Lead', memberImageUrl: 'https://placehold.co/100x100/D0B8E1/FFFFFF?text=IT' },
     ]
   },
 ];
@@ -70,7 +60,7 @@ const DepartmentCard = ({ department }) => {
 
   return (
     <div className="scroll-snap-start p-4 flex-shrink-0 w-[80vw] sm:w-[60vw] md:w-[40vw] lg:w-[30vw] xl:w-[25vw] transition-transform duration-500 ease-in-out">
-      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 flex flex-col items-center transition-all duration-500 ease-in-out transform hover:scale-105 h-[36rem]">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 flex flex-col items-center transition-all duration-500 ease-in-out transform hover:scale-105 h-[42rem]">
         <img
           src={department.imageUrl}
           alt={`Image for ${department.name} department`}
@@ -130,15 +120,15 @@ const DepartmentCarousel = () => {
 
       <button
         onClick={() => scroll('left')}
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#0A101E] text-white p-3 rounded-full shadow-lg z-10 hover:bg-cyan-500"
+        className="absolute text-2xl left-2 top-1/2 transform -translate-y-1/2 bg-[#0A101E] text-white p-4 rounded-xl shadow-lg z-10 hover:bg-cyan-500"
       >
-        ◀
+        {'<'}
       </button>
       <button
         onClick={() => scroll('right')}
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#0A101E] text-white p-3 rounded-full shadow-lg z-10 hover:bg-cyan-500"
+        className="absolute text-2xl right-2 top-1/2 transform -translate-y-1/2 bg-[#0A101E] text-white p-4 rounded-xl shadow-lg z-10 hover:bg-cyan-500"
       >
-        ▶
+        {'>'}
       </button>
 
       <div
